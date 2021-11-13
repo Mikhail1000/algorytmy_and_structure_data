@@ -10,22 +10,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int n = 20;
+        int n = 5000;
         Notebook[] notebooks = new Notebook[n];
-        Notebook[] notebooksSortManufacturer = new Notebook[n];
-        Notebook[] notebooksSortOperateMember = new Notebook[n];
+        Notebook[] notebooksSortManufacturer;
+        Notebook[] notebooksSortOperateMember;
+        Notebook[] notebooksSortPrice;
         Random random = new Random();
 
         for (int i = 0; i < n; i++) {
 
-            notebooks[i] = new Notebook(random.nextInt(1500) + 500, (random.nextInt(3) + 1) * 4, manufacturers[random.nextInt(5)]);
+            notebooks[i] = new Notebook((random.nextInt(16) * 100) + 500, (random.nextInt(3) + 1) * 4, manufacturers[random.nextInt(5)]);
         }
 
         notebooksSortManufacturer = sortManufacturer(notebooks);
         notebooksSortOperateMember = sortOperateMember(notebooksSortManufacturer);
+        notebooksSortPrice = sortPrice(notebooksSortOperateMember);
 
-        for (int i = 0; i < notebooksSortOperateMember.length; i++) {
-            System.out.println(notebooksSortOperateMember[i].toString());
+        for (int i = 0; i < notebooksSortPrice.length; i++) {
+            System.out.println(notebooksSortPrice[i].toString());
         }
 
     }
@@ -58,6 +60,19 @@ public class Main {
             }
         }
         return sortNotebooks;
+    }
+
+    private static Notebook[] sortPrice(Notebook[] notebooks) {
+        for (int i = 1; i < notebooks.length; i++) {
+            Notebook tempNotebook = notebooks[i];
+            int j = i - 1;
+            while (j >= 0 && notebooks[j].getPrice() > tempNotebook.getPrice()) {
+                notebooks[j + 1] = notebooks[j];
+                j--;
+            }
+            notebooks[j + 1] = tempNotebook;
+        }
+        return notebooks;
     }
 
 

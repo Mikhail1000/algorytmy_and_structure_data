@@ -27,6 +27,6 @@ public class Notebook {
 
     @Override
     public String toString() {
-        return this.getManufacturer() + ", " + this.getSizeOperateMember() + " Mb, " + this.getPrice() + " $";
+        return  this.getPrice() + " $" + ", " + this.getSizeOperateMember() + " Mb, " + this.getManufacturer();
     }
 }
