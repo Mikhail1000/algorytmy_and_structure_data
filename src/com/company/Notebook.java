@@ -10,7 +10,6 @@ public class Notebook {
         this.price = price;
         this.sizeOperateMember = sizeOperateMember;
         this.manufacturer = manufacturer;
-
     }
 
     public int getPrice() {
