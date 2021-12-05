@@ -5,8 +5,17 @@ public class Main {
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16};
 
-        int missElement = findMissElementBinary(array);
-        System.out.println("Потерянный элемент = " + missElement);
+        /*int missElement = findMissElementBinary(array);
+        System.out.println("Потерянный элемент = " + missElement);*/
+
+        DequeMy deque = new DequeMy(10);
+        deque.insertRight(1);
+        deque.insertRight(3);
+        deque.display();
+        deque.insertLeft(0);
+        deque.display();
+        deque.removeLeft();
+        deque.display();
     }
 
     private static int findMissElementBinary(int[] array) {
