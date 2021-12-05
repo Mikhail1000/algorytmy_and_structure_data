@@ -1,19 +1,31 @@
 package lesson_3;
 
-import java.util.Arrays;
-
 public class Main {
 
     public static void main(String[] args) {
-
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16};
 
         int missElement = findMissElementBinary(array);
-
         System.out.println("Потерянный элемент = " + missElement);
     }
 
     private static int findMissElementBinary(int[] array) {
+        int start = 0;
+        int end = array.length - 1;
+
+        while (start <= end) {
+            int base = (start + end) / 2;
+
+            if (array[base] - base == 1) {
+                start = base + 1;
+            } else {
+                end = base - 1;
+            }
+        }
+        return start + 1;
+    }
+
+    /*private static int findMissElementBinary(int[] array) {
         int start = 0;
         int end = array.length - 1;
         System.out.println("Длина массива " + end);
@@ -47,6 +59,6 @@ public class Main {
         }
 
         return missElement;
-    }
+    }*/
 
 }
